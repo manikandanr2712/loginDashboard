@@ -1,0 +1,42 @@
+.overlay1 {
+    background-image: url(/assets/mm.jpg);
+    background-position: center;
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    bottom: 0;
+    top: 0;
+}
+.bgg{
+    content: "";
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #6ae0f4;
+    background: linear-gradient(to bottom,#24efe685, #7579ffc9);
+    opacity: 0.9;
+}
+.example-card{
+    padding: 50px;
+    border-radius: 10px;
+}
+.h2{
+    margin-left: -8%;
+}
+.con{
+    margin-bottom: 20px;
+}
+.log{
+    width: 150px;
+    border-color: #0a50ba;
+    border-radius: 20px;
+}
+.button{
+    text-align: center;
+    margin-left: 50%;
+}
+  

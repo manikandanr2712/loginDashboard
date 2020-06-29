@@ -1,0 +1,137 @@
+<div style="height: 80vh;">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Company Logo</span>
+        <span class="menu-spacer"></span>
+        <div fxShow="true" fxHide.lt-md>
+          <a href="#" mat-button>Home</a>
+          <a href="#" mat-button>Menu</a>
+          <a href="#" mat-button>Contact</a>          
+          <a href="/" mat-button>Logout</a>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <mat-sidenav-container fxFlexFill>
+      <mat-sidenav #sidenav>
+        <mat-nav-list>
+          <a href="/products" mat-list-item>Product List</a>
+          <a href="#" mat-list-item>Menu Item 2</a>
+          <a href="#" mat-list-item>Menu Item 3</a>
+          <a href="#" mat-list-item>Menu Item 4</a>
+          <a href="#" mat-list-item>Menu Item 5</a>
+          <a href="#"mat-list-item>Menu Item 6</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
+        <ng-container *ngTemplateOutlet="template"></ng-container></mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+    <div>
+        <ng-container *ngTemplateOutlet="template"></ng-container>
+    </div>
+    <ng-template #template>
+        <router-outlet>
+        </router-outlet>
+    </ng-template>
+ 
+  
+
+
+   <!-- <div class="example-container" *ngIf="loggedIn">
+    <mat-toolbar color="primary" class="example-toolbar" *ngIf="loggedIn">
+        <a *ngIf="user_type === 'Admin'" [routerLink]="['/customer/customertable']"><img src="assets/LogoNew.png" alt="Avatar" class="img"></a>
+        <a *ngIf="user_type === 'Customer'" [routerLink]="['/customer/dashboard']"><img src="assets/LogoNew.png" alt="Avatar" class="img"></a>
+        <div *ngIf="user_type === 'Customer'">
+            <button mat-icon-button (click)="snav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <span class="filler" style="flex: 1 1 auto"></span>
+        <div *ngIf="user_type === 'Customer'">
+            <mat-form-field class="pr">
+                <mat-label>Gateways</mat-label>
+                <mat-select [formControl]="sitesid" (selectionChange)="sitevalueChanged()">
+                    <mat-option *ngFor="let sites of sitelist" [value]="sites">
+                      {{sites.name}} ({{sites.site}})
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="pr">
+                <mat-label>Networks</mat-label>
+                <mat-select [formControl]="vlanid" (selectionChange)="valueChanged()">
+                    <mat-option *ngFor="let vlans of vlanlist" [value]="vlans._id">
+                        {{vlans.vlan}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <mat-icon class="igg" (click)="onhelp()">contact_support</mat-icon>
+        <mat-icon *ngIf="user_type === 'Customer'" class="igg" (click)="onsettings()">settings</mat-icon>
+        <b style="padding-right: 10px;margin-bottom: 7px;font-size: 15px;">{{userDisplayName}}</b>
+        <span> <mat-icon class="ig" [matMenuTriggerFor]="menu">account_circle</mat-icon></span>
+        <mat-menu #menu="matMenu">
+            <button (click)="onprofile()" mat-menu-item><mat-icon>account_circle</mat-icon>Profile</button>
+            <button mat-menu-item (click)="onsign()"><mat-icon>exit_to_app</mat-icon>Signout</button>
+        </mat-menu>
+        
+    </mat-toolbar>
+    <mat-sidenav-container autosize style="position:inherit;" class="example-sidenav-container" [style.marginTop.px]="">
+        <mat-sidenav style="top: 75px;" opened="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+            [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <div *ngIf="user_type === 'Customer'">
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/customer/dashboard" routerLinkActive="active-list-item">
+                        <mat-icon>dashboard</mat-icon>&nbsp;&nbsp;Dashboard
+                    </a>
+                </mat-nav-list>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/customer/gateway" routerLinkActive="active-list-item"    >
+                        <mat-icon>important_devices</mat-icon>&nbsp;&nbsp;Gateways
+                    </a>
+                </mat-nav-list>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/customer/network" routerLinkActive="active-list-item">
+                        <mat-icon>device_hub</mat-icon>&nbsp;&nbsp;Networks
+                    </a>
+                </mat-nav-list>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/customer/devices" routerLinkActive="active-list-item">
+                        <mat-icon>devices</mat-icon>&nbsp;&nbsp;Devices
+                    </a>
+                </mat-nav-list>
+                <mat-divider></mat-divider>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/customer/policiestable" routerLinkActive="active-list-item">
+                        <mat-icon>security</mat-icon>&nbsp;&nbsp;Access Control
+                    </a>
+                </mat-nav-list>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/customer/blacklist" routerLinkActive="active-list-item">
+                        <mat-icon>block</mat-icon>&nbsp;&nbsp;Domain Filter
+                    </a>
+                </mat-nav-list>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="#" routerLinkActive="active-list-item" style="color:red">
+                        <mat-icon>bug_report</mat-icon>&nbsp;&nbsp;<span >Malicious Behaviour&nbsp;</span>
+                    </a>
+                </mat-nav-list>
+                
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <ng-container *ngTemplateOutlet="template"></ng-container>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+<div *ngIf="!loggedIn">
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+</div>
+<ng-template #template>
+    <router-outlet>
+    </router-outlet>
+</ng-template> -->

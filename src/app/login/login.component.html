@@ -1,0 +1,36 @@
+<div fxLayout="row" fxLayoutAlign="center center"  class="overlay1">
+    <div fxLayout="column" fxLayoutAlign="center center" class="bgg">
+         <!-- <span><img src="/assets/logo.png"></span> -->
+        <mat-card class="example-card">
+            <mat-card-header layout-align="start center" class="h2" >
+              <mat-card-title  >LOGIN</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="con">
+              <form [formGroup]="login">
+                <table class="example-full-width" >
+                  <tr>
+                    <td>
+                      <mat-form-field  class="example-full-width matt">
+                      <input matInput placeholder="Email" formControlName="username"  class="form-control" name="email" required>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                  <td><mat-form-field  class="example-full-width matt">
+                    <input matInput placeholder="Password" formControlName="password" type="password"  class="form-control" name="password" required>
+                  </mat-form-field></td>
+                </tr></table>
+                <button mat-stroked-button color="primary" class="log" (click)="log()" >Login</button>
+              </form>
+              
+             
+            </mat-card-content>
+            <mat-card-actions  class="button">
+              <button (click)="forget()"  class="form-control" mat-button routerLink="/forget">Forget Password!</button>
+              
+            </mat-card-actions>
+  
+           
+          </mat-card>
+    </div>
+  </div>
